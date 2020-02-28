@@ -1,0 +1,137 @@
+shadow-in = 0 0 0 0 color-gray-medium, 0 0 0 0 color-white, inset 4px 4px 10px -4px color-gray-medium, inset -6px -6px 6px -6px color-white
+shadow-out = 2px 2px 3px -1px color-gray-medium, -2px -2px 4px 1px color-white, inset 0 0 0 0 color-gray-medium, inset 0 0 0 0 color-white
+
+.social-link
+    align-items: center
+    background: color-off-white
+    border-radius: border-radius-round
+    box-shadow: shadow-in
+    display: inline-flex
+    flex: 0
+    height: element-sizing-button
+    justify-content: center
+    margin: 50px
+    overflow: hidden
+    transition-duration: 100
+    width: @height
+
+    &:hover
+        box-shadow: shadow-out
+        background: color-gray-medium
+
+        path
+            fill: color-off-white
+
+    path
+        fill: color-gray-medium
+
+.round
+    height: 25vmin
+    width: @height
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    position: relative
+
+    &::after
+        content: ""
+        display: block
+        height: "calc(25vmin + %s * 2)" % sizing-LG
+        width: @height
+        position: absolute
+        top: - sizing-LG
+        left: @top
+        background: bg-soft-gradient
+        border-radius: border-radius-round
+        box-shadow: shadow-out
+        z-index: -1
+
+    &__inner
+        object-fit: cover
+        height: 100%
+        width: 100%
+        overflow: hidden
+        border-radius: border-radius-round
+
+.square
+    offset = sizing-LG
+    position: relative
+    border-radius: border-radius-LG
+    margin: 50px
+
+    &--small
+        height: 10vmin
+        width: @height
+
+        &::after
+            height: "calc(%s + %s * 2)" % (@height offset)
+            left: - offset
+            top: @left
+            width: @height
+            box-shadow: shadow-in
+
+        & ^[0]__img
+            opacity: 0.7
+
+            &:hover
+                opacity: 1
+
+    &--large
+        height: 15vmin
+        width: @height
+
+        &::after
+            height: "calc(%s + %s * 2)" % (@height offset)
+            left: - offset
+            box-shadow: shadow-out
+            top: @left
+            width: @height
+
+    &::after
+        border-radius: @border-radius
+        content: ""
+        display: block
+        background: bg-soft-gradient
+        position: absolute
+        z-index: -1
+
+    &__img
+        object-fit: cover
+        height: 100%
+        border-radius: @border-radius
+        width: 100%
+
+.tooltip
+    bg = color-off-white
+    display: inline-flex
+    max-width: rem(200)
+    text-align: center
+    padding: sizing-MD sizing-LG
+    position: absolute
+    z-index: 1
+    font-size: font-size-XL
+
+    &::after
+        display: block
+        content: ""
+        background: bg
+        height: 100%
+        width: 100%
+        position: absolute
+        left: 0
+        top: 0
+        z-index: -2
+        border-radius: border-radius-SM
+        box-shadow: shadow-out
+
+    &::before
+        display: block
+        height: rem(25)
+        width: @height
+        content: ""
+        background: bg
+        position: absolute
+        bottom: 0
+        left: 50%
+        transform: translate(-50%, 50%) rotate(45deg)
+        z-index: -1

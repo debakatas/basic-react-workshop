@@ -1,2 +1,42 @@
-body
-    color: blue
+@require "./helpers/reset"
+@require "./helpers/mixins"
+@require "./helpers/miscelanous"
+@require "./components/*"
+
+:root
+    scrollbar
+
+// General Elements Styling
+html
+    font-family: font-family-default, font-family-sans
+    max-width: 100vw
+    min-height: 100vh
+    scroll-behavior: smooth
+
+    body
+        background: bg-soft-gradient
+        font-family: @font-family
+        height: 100%
+        line-height: line-height-LG
+        max-width: @max-width
+        overflow-x: hidden
+        scroll-behavior: @scroll-behavior
+        width: 100vw
+
+        scrollbar
+        *
+            color: color-gray
+            line-height: inherit
+            scroll-behavior: @scroll-behavior
+
+h1
+h2
+h3
+h4
+h5
+h6
+    font-family: font-family-title, font-family-sans
+
+#debakatas
+    width: 100%
+    height: 100%
