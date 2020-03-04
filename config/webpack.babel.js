@@ -68,14 +68,20 @@ module.exports = {
         ],
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, '../public/index.html'),
+            template: path.resolve(
+                __dirname,
+                '../public/index.html'
+            ),
         }),
     ],
     resolve: {
-        modules: [path.resolve('./src'), path.resolve('./node_modules')],
+        modules: [
+            path.resolve('./src'),
+            path.resolve('./node_modules'),
+        ],
         extensions: ['.js', '.jsx'],
         alias: {
             'react-dom': '@hot-loader/react-dom',

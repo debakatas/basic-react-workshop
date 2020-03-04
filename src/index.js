@@ -7,4 +7,7 @@ import './style/index.styl';
 
 const HotApp = hot(() => <App></App>);
 
-ReactDOM.render(<HotApp />, document.getElementById('debakatas'));
+ReactDOM.render(
+    <HotApp />,
+    document.getElementById('debakatas')
+);

@@ -10,7 +10,6 @@ shadow-out = 2px 2px 3px -1px color-gray-medium, -2px -2px 4px 1px color-white, 
     flex: 0
     height: element-sizing-button
     justify-content: center
-    margin: 50px
     overflow: hidden
     transition-duration: 100
     width: @height
@@ -47,11 +46,25 @@ shadow-out = 2px 2px 3px -1px color-gray-medium, -2px -2px 4px 1px color-white, 
         z-index: -1
 
     &__inner
-        object-fit: cover
-        height: 100%
-        width: 100%
-        overflow: hidden
         border-radius: border-radius-round
+        height: 100%
+        object-fit: cover
+        overflow: hidden
+        position: relative
+        width: 100%
+        z-index: 1
+
+        &--fail
+            align-items: center
+            display: flex
+            flex-direction: column
+            height: 100%
+            justify-content: center
+            left: 0
+            position: absolute
+            text-align: center
+            top: 0
+            z-index: 0
 
 .square
     offset = sizing-LG
@@ -104,12 +117,19 @@ shadow-out = 2px 2px 3px -1px color-gray-medium, -2px -2px 4px 1px color-white, 
 .tooltip
     bg = color-off-white
     display: inline-flex
+    font-size: font-size-XL
+    left: 50%
     max-width: rem(200)
-    text-align: center
+    opacity: 0
     padding: sizing-MD sizing-LG
     position: absolute
+    text-align: center
+    top: 0
+    transform: translate(-50%, -100%)
     z-index: 1
-    font-size: font-size-XL
+
+    &--visible
+        opacity: 1
 
     &::after
         display: block
@@ -135,3 +155,43 @@ shadow-out = 2px 2px 3px -1px color-gray-medium, -2px -2px 4px 1px color-white, 
         left: 50%
         transform: translate(-50%, 50%) rotate(45deg)
         z-index: -1
+
+.social-media
+    padding: sizing-LG
+    position: fixed
+    right: 0
+    top: 0
+
+    > *
+        margin-inline-start: sizing-LG
+
+.button
+    background: color-off-white
+    border-radius: border-radius-MD
+    box-shadow: shadow-in
+    margin-top: sizing-MD
+    padding: sizing-MD sizing-LG
+
+    &:hover
+        background: color-gray-medium
+        box-shadow: shadow-out
+        color: color-off-white
+
+.layout
+    align-items: center
+    display: flex
+    flex-direction: column
+    justify-content: center
+    min-height: 100vh
+
+    &__video
+        position: relative
+
+.active-img
+    height: 100%
+    left: 0
+    object-fit: contain
+    position: absolute
+    top: 0
+    width: 100%
+    z-index: 10
