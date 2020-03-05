@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ActiveImg = ({ position }) => {
+const ActiveImg = ({ position, src }) => {
     if (!position) return null;
 
     const { width, height, top, left } = position;
@@ -8,13 +8,13 @@ const ActiveImg = ({ position }) => {
     return (
         <img
             className="active-img"
-            src="https://source.unsplash.com/random/400x700"
+            src={src}
             alt=""
             style={{
                 maxWidth: `${width}px`,
-                maxHeight: `${height}px`,
-                transform: `translate(${left}px , ${top -
-                    (height * 90) / 100}px)`,
+                maxHeight: `${height * 1.5}px`,
+                left,
+                top,
             }}
         />
     );

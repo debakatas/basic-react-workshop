@@ -1,27 +1,41 @@
 import React, { useState } from 'react';
 
-const OptionElement = ({ preview, tooltip }) => {
+const OptionElement = ({
+    id,
+    onClick,
+    preview,
+    tooltip,
+}) => {
     const [visible, setVisible] = useState(false);
 
     return (
-        <figure
-            className="square square--small"
-            onMouseEnter={() => setVisible(true)}
-            onMouseLeave={() => setVisible(false)}
+        <li
+            onClick={() => onClick(id)}
+            role="menuitem"
+            onKeyPress={({ which }) => {
+                if (which === 13) onClick(id);
+            }}
+            tabIndex="0"
         >
-            <img
-                className="square__img"
-                src={preview}
-                alt=""
-            />
-            <figcaption
-                className={`tooltip ${
-                    visible ? 'tooltip--visible' : ''
-                }`}
+            <figure
+                className="square square--small"
+                onMouseEnter={() => setVisible(true)}
+                onMouseLeave={() => setVisible(false)}
             >
-                {tooltip}
-            </figcaption>
-        </figure>
+                <img
+                    className="square__img"
+                    src={preview}
+                    alt=""
+                />
+                <figcaption
+                    className={`tooltip ${
+                        visible ? 'tooltip--visible' : ''
+                    }`}
+                >
+                    {tooltip}
+                </figcaption>
+            </figure>
+        </li>
     );
 };
 

@@ -4,6 +4,7 @@
         "prefer-const": "off",
         "react/prop-types": "off",
         "react-hooks/exhaustive-deps": "off",
+        "no-shadow": "warn",
         "prettier/prettier": [
             "error",
             {

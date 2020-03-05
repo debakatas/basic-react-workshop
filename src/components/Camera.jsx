@@ -11,8 +11,6 @@ const Camera = ({ setPosition }) => {
             videoRef.current
         );
 
-        console.log(face);
-
         if (face) {
             const {
                 top,
@@ -29,11 +27,11 @@ const Camera = ({ setPosition }) => {
                     top,
                     left,
                     width:
-                        Math.abs(prev.width - width) > 100
+                        Math.abs(prev.width - width) > 20
                             ? width
                             : prev.width,
                     height:
-                        Math.abs(prev.height - height) > 100
+                        Math.abs(prev.height - height) > 20
                             ? height
                             : prev.height,
                 };
@@ -46,9 +44,14 @@ const Camera = ({ setPosition }) => {
     };
 
     useEffect(() => {
+        const {
+            width,
+            height,
+        } = videoRef.current.getBoundingClientRect();
+
         navigator.mediaDevices
             .getUserMedia({
-                video: { width: 245, height: 245 },
+                video: { width, height },
             })
             .then((streamMedia) => {
                 videoRef.current.srcObject = streamMedia;

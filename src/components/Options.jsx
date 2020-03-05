@@ -1,19 +1,18 @@
 import React from 'react';
-import data from '../data';
 import OptionElement from './OptionElement';
 
-console.log(data);
-
-const Options = () => (
-    <div>
-        {data.map(({ preview, tooltip }) => (
+const Options = ({ options, path, onClick }) => (
+    <ul className="options-list">
+        {Object.keys(options).map((key) => (
             <OptionElement
-                key={tooltip}
-                preview={preview}
-                tooltip={tooltip}
+                id={key}
+                key={options[key].tooltip}
+                onClick={onClick}
+                preview={`${path}${options[key].options[0]}`}
+                tooltip={options[key].tooltip}
             ></OptionElement>
         ))}
-    </div>
+    </ul>
 );
 
 export default Options;
