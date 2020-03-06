@@ -1,3 +1,15 @@
+/*
+    This file will load the camera and set
+    the face detection, its complexity
+    is a bit beyond the scope of the workshop
+    so we are having it before we start.
+
+    In case you don't have camera, Google Chrome or
+    the face detection capabilities, you'll get a nice
+    mock so you can still work the workshop.
+
+*/
+
 import React, { useEffect, useRef, useState } from 'react';
 import randomInRange from '../random';
 

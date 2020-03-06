@@ -1,3 +1,10 @@
+/*
+    This is the file we use to create the
+    configuration that transpiles the JSX
+    into JS and creates the server so
+    we have live changes
+*/
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
