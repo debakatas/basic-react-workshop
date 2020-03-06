@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const OptionElement = ({
     id,
+    isActive,
     onClick,
     preview,
     tooltip,
@@ -18,7 +19,9 @@ const OptionElement = ({
             tabIndex="0"
         >
             <figure
-                className="square square--small"
+                className={`square square--${
+                    isActive ? 'large' : 'small'
+                }`}
                 onMouseEnter={() => setVisible(true)}
                 onMouseLeave={() => setVisible(false)}
             >

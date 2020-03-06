@@ -71,41 +71,41 @@ shadow-out = 2px 2px 3px -1px color-gray-medium, -2px -2px 4px 1px color-white, 
     position: relative
     border-radius: border-radius-LG
     margin: 50px
+    height: 10vmin
+    width: @height
 
     &--small
-        height: 10vmin
-        width: @height
+        cursor: pointer
 
         &::after
-            height: "calc(%s + %s * 2)" % (@height offset)
-            left: - offset
-            top: @left
-            width: @height
             box-shadow: shadow-in
 
         & ^[0]__img
             opacity: 0.7
 
             &:hover
-                opacity: 1
+                opacity: 0.9
 
     &--large
-        height: 15vmin
-        width: @height
+        transform: scale(1.2)
+        z-index: 1
 
         &::after
-            height: "calc(%s + %s * 2)" % (@height offset)
-            left: - offset
             box-shadow: shadow-out
-            top: @left
-            width: @height
+
+        .tooltip
+            opacity: 0
 
     &::after
+        background: bg-soft-gradient
         border-radius: @border-radius
         content: ""
         display: block
-        background: bg-soft-gradient
+        height: "calc(%s + %s * 2)" % (@height offset)
+        left: - offset
         position: absolute
+        top: @left
+        width: @height
         z-index: -1
 
     &__img
@@ -188,6 +188,7 @@ shadow-out = 2px 2px 3px -1px color-gray-medium, -2px -2px 4px 1px color-white, 
         position: relative
 
 .active-img
+    cursor: pointer
     left: 0
     object-fit: contain
     position: absolute
