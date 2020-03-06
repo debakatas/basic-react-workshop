@@ -76,6 +76,7 @@ const App = () => {
                     )}
                     <Camera
                         setPosition={setPosition}
+                        speed={500}
                     ></Camera>
                 </div>
                 {data && (

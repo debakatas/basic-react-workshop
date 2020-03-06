@@ -1,10 +1,40 @@
 import React, { useEffect, useRef, useState } from 'react';
+import randomInRange from '../random';
 
-const faceDetector = new window.FaceDetector();
+const FakeCamera = ({ setPosition, speed = 1000 }) => {
+    const imgRef = useRef(null);
 
-const Camera = ({ setPosition }) => {
+    useEffect(() => {
+        setInterval(() => {
+            const {
+                height,
+            } = imgRef.current.getBoundingClientRect();
+
+            const getPercent = (n) => (height * n) / 100;
+
+            setPosition({
+                top: getPercent(randomInRange(25, 30)),
+                left: getPercent(randomInRange(25, 30)),
+                width: getPercent(20),
+                height: getPercent(20),
+            });
+        }, speed);
+    }, [imgRef]);
+
+    return (
+        <img
+            ref={imgRef}
+            src="https://static.tvtropes.org/pmwiki/pub/images/Aleister_Crowley_1310.jpg"
+            className="round__inner"
+            alt=""
+        />
+    );
+};
+
+const Camera = ({ setPosition, speed = 1000 }) => {
     const [hasFailed, setFailure] = useState(false);
     const videoRef = useRef(null);
+    const faceDetector = new window.FaceDetector();
 
     const kickFaceDetection = async () => {
         const [face] = await faceDetector.detect(
@@ -40,7 +70,7 @@ const Camera = ({ setPosition }) => {
 
         setTimeout(() => {
             kickFaceDetection();
-        }, 1000);
+        }, speed);
     };
 
     useEffect(() => {
@@ -89,4 +119,16 @@ const Camera = ({ setPosition }) => {
     );
 };
 
-export default Camera;
+const CameraWrapper = (props) => (
+    <figure className="round">
+        {!window.FaceDetector ||
+        !navigator.mediaDevices ||
+        !navigator.mediaDevices.enumerateDevices ? (
+            <FakeCamera {...props} />
+        ) : (
+            <Camera {...props} />
+        )}
+    </figure>
+);
+
+export default CameraWrapper;
