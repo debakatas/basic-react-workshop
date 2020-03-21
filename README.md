@@ -1,4 +1,4 @@
-# Aprende React con el workshop de #debakatas
+# ReactJS en VIVO #debakatas
 
 Siguenos en nuestras redes sociales para más eventos de programación.
 
