@@ -44,6 +44,7 @@
 
 .user
     background: url("../img/user.png"), color-brown
+    background-position: center center
     background-size: cover
     display: flex
     flex-direction: column
@@ -75,9 +76,27 @@
             flex-shrink: 0
             box-shadow: -4px 4px 2px color-green
             border: 1px solid transparent
+            position: relative
+            z-index: 1
 
             &:hover
                 border: 1px solid color-red
+                transform: scale(1.2) skewX(5deg)
+                z-index: 2
 
             &:nth-child(3)
                 transform: translate(50%, -25%)
+
+                &:hover
+                    transform: translate(50%, -25%) scale(1.2) skewX(5deg)
+
+.filter
+    &__search
+        padding: 10px 20px
+        border: 1px solid color-yellow
+
+    &__options
+        display: flex
+        justify-content: space-around
+        align-items: center
+        font-size: 20px
