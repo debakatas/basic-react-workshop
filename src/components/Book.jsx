@@ -28,6 +28,11 @@ const Book = ({
             };
         }
 
+        console.log({
+            ...clients,
+            [activeUser]: myUser,
+        });
+
         setClients({
             ...clients,
             [activeUser]: myUser,

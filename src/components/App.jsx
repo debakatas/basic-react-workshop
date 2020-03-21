@@ -32,7 +32,7 @@ const App = () => {
             ></Clients>
             <Library
                 setInfo={setInfo}
-                setClients={setInfo}
+                setClients={setClients}
                 books={info.books}
                 activeUser={activeUser}
                 clients={clients}
