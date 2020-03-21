@@ -5,12 +5,14 @@ import Filter from './Filter';
 const Library = () => (
     <div>
         <Filter></Filter>
-        {'.'
-            .repeat(10)
-            .split('')
-            .map(() => (
-                <Book></Book>
-            ))}
+        <div className="shelter">
+            {'.'
+                .repeat(10)
+                .split('')
+                .map(() => (
+                    <Book></Book>
+                ))}
+        </div>
     </div>
 );
 

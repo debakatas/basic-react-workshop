@@ -1,7 +1,7 @@
 import React from 'react';
 
 const User = () => (
-    <div className="user user__highlight">
+    <div className="user">
         <h3>Arquimedes</h3>
         <figure className="user__books">
             <img
