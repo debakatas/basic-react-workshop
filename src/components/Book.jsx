@@ -1,14 +1,17 @@
 import React from 'react';
 
-const Book = () => (
-    <div className="book">
+const Book = ({ title, available, author, cover }) => (
+    <div
+        className={`book ${
+            available ? '' : 'book--unavailable'
+        }`}
+    >
         <figure className="book__img">
-            <img
-                src="http://debakatas.com/cover/manuscrito-voynich.jpg"
-                alt=""
-            />
+            <img src={cover} alt="" />
         </figure>
-        <button type="button">Pedir</button>
+        <button type="button">
+            {!available ? 'No disponible' : 'Pedir'}
+        </button>
     </div>
 );
 

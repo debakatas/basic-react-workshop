@@ -9,6 +9,17 @@
         .book__img > img
             top: 0
 
+    &--unavailable
+        opacity: 0.75
+
+        &:hover
+            .book__img > img
+                top: 20%
+
+        > button
+            pointer-events: none
+            background-color: color-green
+
     &__img
         padding: 0 10px
         position: relative
