@@ -1,8 +1,8 @@
 import React from 'react';
 
-const User = () => (
+const User = ({ name, books, dateCreated }) => (
     <div className="user">
-        <h3>Arquimedes</h3>
+        <h3>{name}</h3>
         <figure className="user__books">
             <img
                 src="http://debakatas.com/cover/manuscrito-voynich.jpg"

@@ -126,6 +126,9 @@
         flex-basis: 400px
         flex-shrink: 0
 
+    >:last-child
+        flex-grow: 1
+
 .cartel
     background: color-green
     border: 1px solid color-yellow
@@ -182,6 +185,14 @@
         display: flex
         justify-content: center
         align-items: center
+        flex-direction: column
+
+.error
+    color: color-red
+    font-style: italic
+    text-decoration: underline
+    margin-top: 10px
+    white-space: nowrap
 
 .clients
     display: grid
@@ -194,3 +205,8 @@
     grid-template-columns: repeat(3, 1fr)
     grid-column-gap: 20px
     padding-bottom: 40px
+
+.no-book
+    padding: 60px
+    font-size: 20px
+    white-space: nowrap

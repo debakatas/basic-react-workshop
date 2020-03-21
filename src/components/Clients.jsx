@@ -2,23 +2,29 @@ import React from 'react';
 import User from './User';
 import CreateUser from './CreateUser';
 
-const Clients = () => (
-    <div>
-        <h1 className="cartel">
-            <span>Biblioteca Paranormal</span>
-            <small>0.00</small>
-        </h1>
+const Clients = ({ clients, setClients }) => {
+    const a = '';
 
-        <div className="clients">
-            <CreateUser></CreateUser>
-            {'.'
-                .repeat(10)
-                .split('')
-                .map(() => (
-                    <User></User>
-                ))}
+    return (
+        <div>
+            <h1 className="cartel">
+                <span>Biblioteca Paranormal</span>
+                <small>0.00</small>
+            </h1>
+
+            <div className="clients">
+                <CreateUser
+                    clients={clients}
+                    setClients={setClients}
+                ></CreateUser>
+                {Object.entries(clients).map(
+                    ([id, client]) => (
+                        <User name={id} {...client}></User>
+                    )
+                )}
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default Clients;

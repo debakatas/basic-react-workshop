@@ -5,18 +5,40 @@ const Filter = ({ books, setBooksFiltered }) => {
     const [onlyAvailable, changeOnlyAvailable] = useState(
         false
     );
+    const [counter, setCounter] = useState('0 de 0 Libros');
 
     useEffect(() => {
-        Object.entries(books).filter(([id, book]) => {
-            let isAvailable = false;
-            let hasMatch = false;
+        const arrayBooks = Object.entries(books);
+        const arrayFiltrado = arrayBooks.filter(
+            ([id, book]) => {
+                let isAvailable = true;
+                let hasMatch = true;
 
-            if (onlyAvailable) {
-                console.log('');
+                if (onlyAvailable) {
+                    isAvailable = book.available;
+                }
+
+                if (input) {
+                    hasMatch = `
+                    ${book.author}
+                    ${book.title}
+                `
+                        .toLowerCase()
+                        .includes(input.toLowerCase());
+                }
+
+                return hasMatch && isAvailable;
             }
+        );
 
-            return true;
-        });
+        const objFiltrado = Object.fromEntries(
+            arrayFiltrado
+        );
+        setBooksFiltered(objFiltrado);
+
+        setCounter(
+            `${arrayFiltrado.length} de ${arrayBooks.length} Libros`
+        );
     }, [books, input, onlyAvailable]);
 
     return (
@@ -30,7 +52,7 @@ const Filter = ({ books, setBooksFiltered }) => {
                 }}
             />
             <div className="filter__options">
-                <small>106 de 107 Libros</small>
+                <small>{counter}</small>
 
                 <label htmlFor="filterCheckbox">
                     <input
