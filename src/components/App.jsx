@@ -14,6 +14,8 @@ const App = () => {
 
     const [clients, setClients] = useState({});
 
+    const [activeUser, setActiveUser] = useState('');
+
     useEffect(() => {
         fetch(API_URL)
             .then((res) => res.json())
@@ -23,10 +25,18 @@ const App = () => {
     return (
         <div className="app">
             <Clients
+                activeUser={activeUser}
+                setActiveUser={setActiveUser}
                 clients={clients}
                 setClients={setClients}
             ></Clients>
-            <Library books={info.books}></Library>
+            <Library
+                setInfo={setInfo}
+                setClients={setInfo}
+                books={info.books}
+                activeUser={activeUser}
+                clients={clients}
+            ></Library>
         </div>
     );
 };

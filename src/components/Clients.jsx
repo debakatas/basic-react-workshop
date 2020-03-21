@@ -2,7 +2,12 @@ import React from 'react';
 import User from './User';
 import CreateUser from './CreateUser';
 
-const Clients = ({ clients, setClients }) => {
+const Clients = ({
+    clients,
+    setClients,
+    setActiveUser,
+    activeUser,
+}) => {
     const a = '';
 
     return (
@@ -19,7 +24,12 @@ const Clients = ({ clients, setClients }) => {
                 ></CreateUser>
                 {Object.entries(clients).map(
                     ([id, client]) => (
-                        <User name={id} {...client}></User>
+                        <User
+                            setActiveUser={setActiveUser}
+                            activeUser={activeUser}
+                            name={id}
+                            {...client}
+                        ></User>
                     )
                 )}
             </div>

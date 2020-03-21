@@ -3,7 +3,13 @@ import Book from './Book';
 import Filter from './Filter';
 import NoBook from './NoBook';
 
-const Library = ({ books }) => {
+const Library = ({
+    books,
+    setInfo,
+    setClients,
+    activeUser,
+    clients,
+}) => {
     const [booksFiltered, setBooksFiltered] = useState(
         books
     );
@@ -19,7 +25,14 @@ const Library = ({ books }) => {
             <div className="shelter">
                 {arrayBooks.length ? (
                     arrayBooks.map(([id, book]) => (
-                        <Book {...book}></Book>
+                        <Book
+                            {...book}
+                            id={id}
+                            setInfo={setInfo}
+                            setClients={setClients}
+                            activeUser={activeUser}
+                            clients={clients}
+                        ></Book>
                     ))
                 ) : (
                     <NoBook></NoBook>
