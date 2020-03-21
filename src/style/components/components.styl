@@ -1,7 +1,9 @@
 .book
     padding: 0 20px
-    display: flex
+    display: inline-flex
     flex-direction: column
+    text-align: center
+    flex-grow: 0
 
     &:hover
         .book__img > img
@@ -39,3 +41,43 @@
 
         &:hover
             background: color-green-light
+
+.user
+    background: url("../img/user.png"), color-brown
+    background-size: cover
+    display: flex
+    flex-direction: column
+    text-align: center
+    width: 210px
+    height: 293px
+    align-items: center
+    border-radius: 10px
+    margin-top: 40px
+
+    &__highlight
+        box-shadow: 0 0 10px color-green-light
+
+    > h3
+        padding: 10px 20px
+        background: color-green
+        text-transform: uppercase
+        border: 1px solid color-yellow
+        flex-grow: 0
+        transform: translateY(-50%)
+
+    &__books
+        display: flex
+        padding: 20px
+        flex-wrap: wrap
+
+        >img
+            flex-basis: 50%
+            flex-shrink: 0
+            box-shadow: -4px 4px 2px color-green
+            border: 1px solid transparent
+
+            &:hover
+                border: 1px solid color-red
+
+            &:nth-child(3)
+                transform: translate(50%, -25%)
