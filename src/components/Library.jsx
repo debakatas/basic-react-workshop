@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Book from './Book';
 import Filter from './Filter';
 import NoBook from './NoBook';
 
 const Library = ({
     books,
-    setInfo,
+    setBooks,
     setClients,
     activeUser,
     clients,
@@ -13,6 +13,10 @@ const Library = ({
     const [booksFiltered, setBooksFiltered] = useState(
         books
     );
+
+    useEffect(() => {
+        console.log('cambiarooooon');
+    }, [books]);
 
     const arrayBooks = Object.entries(booksFiltered);
 
@@ -28,7 +32,7 @@ const Library = ({
                         <Book
                             {...book}
                             id={id}
-                            setInfo={setInfo}
+                            setBooks={setBooks}
                             setClients={setClients}
                             activeUser={activeUser}
                             clients={clients}

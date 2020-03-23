@@ -6,7 +6,7 @@ const Book = ({
     author,
     cover,
     id,
-    setInfo,
+    setBooks,
     setClients,
     activeUser,
     clients,
@@ -26,12 +26,17 @@ const Book = ({
                 title,
                 dateRequested: Date.now(),
             };
-        }
 
-        console.log({
-            ...clients,
-            [activeUser]: myUser,
-        });
+            setBooks((books) => {
+                const newBooks = { ...books };
+                newBooks[id] = {
+                    ...newBooks[id],
+                    available: books[id].available - 1,
+                };
+
+                return newBooks;
+            });
+        }
 
         setClients({
             ...clients,

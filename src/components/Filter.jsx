@@ -8,7 +8,7 @@ const Filter = ({ books, setBooksFiltered }) => {
     const [counter, setCounter] = useState('0 de 0 Libros');
 
     useEffect(() => {
-        console.log(books);
+        console.log('me estan cambiando');
 
         const arrayBooks = Object.entries(books);
         const arrayFiltrado = arrayBooks.filter(
