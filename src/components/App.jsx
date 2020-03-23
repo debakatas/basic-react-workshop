@@ -8,12 +8,10 @@ const API_URL =
 
 const App = () => {
     const [books, setBooks] = useState({});
-
-    const [minutePrice, setMinutePrice] = useState(0);
-
     const [clients, setClients] = useState({});
-
     const [activeUser, setActiveUser] = useState('');
+    const [profit, setProfit] = useState(0);
+    const [minutePrice, setMinutePrice] = useState(0);
 
     useEffect(() => {
         fetch(API_URL)
@@ -31,6 +29,10 @@ const App = () => {
                 setActiveUser={setActiveUser}
                 clients={clients}
                 setClients={setClients}
+                profit={profit}
+                setProfit={setProfit}
+                setBooks={setBooks}
+                minutePrice={minutePrice}
             ></Clients>
             <Library
                 setBooks={setBooks}

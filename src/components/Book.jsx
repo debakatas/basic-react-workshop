@@ -3,7 +3,6 @@ import React from 'react';
 const Book = ({
     title,
     available,
-    author,
     cover,
     id,
     setBooks,

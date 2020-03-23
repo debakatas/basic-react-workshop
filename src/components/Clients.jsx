@@ -7,34 +7,36 @@ const Clients = ({
     setClients,
     setActiveUser,
     activeUser,
-}) => {
-    const a = '';
+    profit,
+    setProfit,
+    setBooks,
+    minutePrice,
+}) => (
+    <div>
+        <h1 className="cartel">
+            <span>Biblioteca Paranormal</span>
+            <small>{profit.toFixed(2)}</small>
+        </h1>
 
-    return (
-        <div>
-            <h1 className="cartel">
-                <span>Biblioteca Paranormal</span>
-                <small>0.00</small>
-            </h1>
-
-            <div className="clients">
-                <CreateUser
-                    clients={clients}
+        <div className="clients">
+            <CreateUser
+                clients={clients}
+                setClients={setClients}
+            ></CreateUser>
+            {Object.entries(clients).map(([id, client]) => (
+                <User
+                    setActiveUser={setActiveUser}
+                    activeUser={activeUser}
+                    name={id}
+                    setProfit={setProfit}
+                    setBooks={setBooks}
+                    minutePrice={minutePrice}
                     setClients={setClients}
-                ></CreateUser>
-                {Object.entries(clients).map(
-                    ([id, client]) => (
-                        <User
-                            setActiveUser={setActiveUser}
-                            activeUser={activeUser}
-                            name={id}
-                            {...client}
-                        ></User>
-                    )
-                )}
-            </div>
+                    {...client}
+                ></User>
+            ))}
         </div>
-    );
-};
+    </div>
+);
 
 export default Clients;
