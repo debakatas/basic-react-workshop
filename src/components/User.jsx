@@ -3,7 +3,6 @@ import React from 'react';
 const User = ({
     name,
     books,
-    dateCreated,
     activeUser,
     setActiveUser,
     setProfit,

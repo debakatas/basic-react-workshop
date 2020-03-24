@@ -14,10 +14,6 @@ const Library = ({
         books
     );
 
-    useEffect(() => {
-        console.log('cambiarooooon');
-    }, [books]);
-
     const arrayBooks = Object.entries(booksFiltered);
 
     return (

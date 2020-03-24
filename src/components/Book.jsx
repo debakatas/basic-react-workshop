@@ -4,6 +4,7 @@ const Book = ({
     title,
     available,
     cover,
+    author,
     id,
     setBooks,
     setClients,
@@ -26,14 +27,13 @@ const Book = ({
                 dateRequested: Date.now(),
             };
 
-            setBooks((books) => {
-                const newBooks = { ...books };
-                newBooks[id] = {
-                    ...newBooks[id],
-                    available: books[id].available - 1,
-                };
+            setBooks((oldBooks) => {
+                const books = { ...oldBooks };
+                books[id].available -= 1;
 
-                return newBooks;
+                return {
+                    ...books,
+                };
             });
         }
 
@@ -49,8 +49,21 @@ const Book = ({
                 available ? '' : 'book--unavailable'
             }`}
         >
-            <figure className="book__img">
-                <img src={cover} alt="" />
+            <figure className="book__img book-flip">
+                <div className="book-flip__inner">
+                    <div className="book-flip__front">
+                        <img src={cover} alt="" />
+                    </div>
+                    <div
+                        className="book-flip__back"
+                        style={{
+                            backgroundImage: `url(${cover})`,
+                        }}
+                    >
+                        <h2>{title}</h2>
+                        <h3>{author}</h3>
+                    </div>
+                </div>
             </figure>
             <button type="button" onClick={lendBook}>
                 {!available ? 'No disponible' : 'Pedir'}

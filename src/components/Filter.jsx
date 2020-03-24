@@ -8,8 +8,6 @@ const Filter = ({ books, setBooksFiltered }) => {
     const [counter, setCounter] = useState('0 de 0 Libros');
 
     useEffect(() => {
-        console.log('me estan cambiando');
-
         const arrayBooks = Object.entries(books);
         const arrayFiltrado = arrayBooks.filter(
             ([id, book]) => {
@@ -26,7 +24,10 @@ const Filter = ({ books, setBooksFiltered }) => {
                     ${book.title}
                 `
                         .toLowerCase()
-                        .includes(input.toLowerCase());
+                        .trim()
+                        .includes(
+                            input.toLowerCase().trim()
+                        );
                 }
 
                 return hasMatch && isAvailable;
