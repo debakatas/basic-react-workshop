@@ -54,14 +54,13 @@ const Book = ({
                     <div className="book-flip__front">
                         <img src={cover} alt="" />
                     </div>
-                    <div
-                        className="book-flip__back"
-                        style={{
-                            backgroundImage: `url(${cover})`,
-                        }}
-                    >
-                        <h2>{title}</h2>
-                        <h3>{author}</h3>
+                    <div className="book-flip__back">
+                        <h2 className="book__title">
+                            {title}
+                        </h2>
+                        <h3 className="book__author">
+                            {author}
+                        </h3>
                     </div>
                 </div>
             </figure>
