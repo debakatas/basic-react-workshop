@@ -8,7 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader/root';
 
-import App from './components/App2';
+import App from './components/App';
 
 // Import stylus (css) here so we have styles to be auto-reloaded
 import './style/index.styl';
