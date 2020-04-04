@@ -1,27 +1,34 @@
 import React from 'react';
 
-const Book = () => (
-    <div className="book book--unavailable">
-        <figure className="book__img book-flip">
-            <div className="book-flip__inner">
-                <div className="book-flip__front">
-                    <img
-                        src="http://debakatas.com/cover/enlasmontanasdelalocura.jpg"
-                        alt=""
-                    />
+const Book = ({ author, available, title, cover }) => {
+    let className = 'book';
+
+    if (!available) {
+        className += ' book--unavailable';
+    }
+
+    return (
+        <div className={className}>
+            <figure className="book__img book-flip">
+                <div className="book-flip__inner">
+                    <div className="book-flip__front">
+                        <img src={cover} alt="" />
+                    </div>
+                    <div className="book-flip__back">
+                        <h2 className="book__title">
+                            {title}
+                        </h2>
+                        <h3 className="book__author">
+                            {author}
+                        </h3>
+                    </div>
                 </div>
-                <div className="book-flip__back">
-                    <h2 className="book__title">
-                        En las montañas de la Locura
-                    </h2>
-                    <h3 className="book__author">
-                        H.P Lovecraft
-                    </h3>
-                </div>
-            </div>
-        </figure>
-        <button type="button">No disponible</button>
-    </div>
-);
+            </figure>
+            <button type="button">
+                {available ? 'Pedir' : 'No disponible'}
+            </button>
+        </div>
+    );
+};
 
 export default Book;
