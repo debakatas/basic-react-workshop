@@ -29,14 +29,6 @@ const App = () => {
                 <h1 className="cartel">
                     <span>Biblioteca Paranormal</span>
                     <small>{profit}</small>
-                    <button
-                        type="button"
-                        onClick={() => {
-                            setProfit(10);
-                        }}
-                    >
-                        Cambiar profit
-                    </button>
                 </h1>
 
                 <Clients />
@@ -45,8 +37,5 @@ const App = () => {
         </div>
     );
 };
-
-// component will mount
-// component did mount
 
 export default App;
