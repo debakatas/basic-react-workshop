@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const Filter = ({ filteredBooks, setFilteredBooks }) => {
+const Filter = ({ books, setFilteredBooks }) => {
     const [input, setInput] = useState('');
+    const [counter, setCounter] = useState('0 de 0 Libros');
     const [onlyAvailable, setOnlyAvailable] = useState(
         false
     );
 
     useEffect(() => {
-        const booksArray = Object.entries(filteredBooks);
+        const booksArray = Object.entries(books);
 
         const filteredBooksArray = booksArray.filter(
             ([id, book]) => {
@@ -21,10 +22,12 @@ const Filter = ({ filteredBooks, setFilteredBooks }) => {
                 `
                         .toLowerCase()
                         .trim()
-                        .includes(input);
+                        .includes(
+                            input.toLowerCase().trim()
+                        );
                 }
 
-                if (isAvailable) {
+                if (onlyAvailable) {
                     isAvailable = book.available > 0;
                 }
 
@@ -37,7 +40,10 @@ const Filter = ({ filteredBooks, setFilteredBooks }) => {
         );
 
         setFilteredBooks(filteredBooksObject);
-    }, [input, onlyAvailable]);
+        setCounter(
+            `${filteredBooksArray.length} de ${booksArray.length} Libros`
+        );
+    }, [input, onlyAvailable, books]);
 
     return (
         <form className="filter">
@@ -50,13 +56,15 @@ const Filter = ({ filteredBooks, setFilteredBooks }) => {
                 }}
             />
             <div className="filter__options">
-                <small>10 de 10 Libros</small>
+                <small>{counter}</small>
 
                 <label htmlFor="filterCheckbox">
                     <input
                         type="checkbox"
                         id="filterCheckbox"
-                        onChange={(e) => {
+                        onClick={(e) => {
+                            console.log('test');
+
                             setOnlyAvailable(
                                 e.target.checked
                             );

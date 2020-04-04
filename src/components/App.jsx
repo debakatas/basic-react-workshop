@@ -14,6 +14,8 @@ const App = () => {
 
     const [pricePerMinute, setPricePerMinute] = useState(0);
 
+    const [activeUser, setActiveUser] = useState('');
+
     useEffect(() => {
         fetch(BACK_URL)
             .then((res) => res.json())
@@ -31,9 +33,19 @@ const App = () => {
                     <small>{profit}</small>
                 </h1>
 
-                <Clients />
+                <Clients
+                    activeUser={activeUser}
+                    setActiveUser={setActiveUser}
+                    clients={clients}
+                    setClients={setClients}
+                />
             </div>
-            <Library books={books} />
+            <Library
+                activeUser={activeUser}
+                books={books}
+                clients={clients}
+                setClients={setClients}
+            />
         </div>
     );
 };

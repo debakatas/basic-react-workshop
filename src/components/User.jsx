@@ -1,13 +1,23 @@
 import React from 'react';
 
-const User = () => (
-    <div className="user user__highlight">
-        <button type="button">Deumus</button>
+const User = ({ id, books, setActiveUser, activeUser }) => (
+    <div
+        className={`user ${
+            id === activeUser ? 'user__highlight' : ''
+        }`}
+    >
+        <button
+            type="button"
+            onClick={() => {
+                setActiveUser(id);
+            }}
+        >
+            {id}
+        </button>
         <figure className="user__books">
-            <img
-                src="http://debakatas.com/cover/enlasmontanasdelalocura.jpg"
-                alt="En las montañas de la Locura"
-            />
+            {Object.entries(books).map((book) => (
+                <img src={book.cover} alt={book.title} />
+            ))}
         </figure>
     </div>
 );

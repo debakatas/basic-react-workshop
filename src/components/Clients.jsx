@@ -3,11 +3,27 @@ import React from 'react';
 import CreateUser from './CreateUser';
 import User from './User';
 
-const Clients = () => (
+const Clients = ({
+    clients,
+    setClients,
+    setActiveUser,
+    activeUser,
+}) => (
     <div className="clients">
-        <CreateUser />
+        <CreateUser
+            clients={clients}
+            setClients={setClients}
+        />
 
-        <User />
+        {Object.entries(clients).map(([id, client]) => (
+            <User
+                key={id}
+                id={id}
+                books={client.books}
+                activeUser={activeUser}
+                setActiveUser={setActiveUser}
+            />
+        ))}
     </div>
 );
 

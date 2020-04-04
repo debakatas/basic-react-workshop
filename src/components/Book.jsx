@@ -1,11 +1,37 @@
 import React from 'react';
 
-const Book = ({ author, available, title, cover }) => {
+const Book = ({
+    author,
+    available,
+    title,
+    cover,
+    clients,
+    setClients,
+    activeUser,
+    id,
+}) => {
     let className = 'book';
 
     if (!available) {
         className += ' book--unavailable';
     }
+
+    const addBook = () => {
+        setClients((prevClients) => ({
+            ...prevClients,
+            [activeUser]: {
+                books: {
+                    ...prevClients[activeUser].books,
+                    // [id]: {
+                    //     author,
+                    //     title,
+                    //     cover,
+                    //     dateRequested: Date.now(),
+                    // },
+                },
+            },
+        }));
+    };
 
     return (
         <div className={className}>
@@ -24,7 +50,7 @@ const Book = ({ author, available, title, cover }) => {
                     </div>
                 </div>
             </figure>
-            <button type="button">
+            <button type="button" onClick={addBook}>
                 {available ? 'Pedir' : 'No disponible'}
             </button>
         </div>
