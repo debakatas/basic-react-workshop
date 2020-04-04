@@ -37,7 +37,7 @@ const Filter = ({ filteredBooks, setFilteredBooks }) => {
         );
 
         setFilteredBooks(filteredBooksObject);
-    }, [input, onlyAvailable, filteredBooks]);
+    }, [input, onlyAvailable]);
 
     return (
         <form className="filter">
