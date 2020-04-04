@@ -8,6 +8,9 @@ const Clients = ({
     setClients,
     setActiveUser,
     activeUser,
+    setBooks,
+    setProfit,
+    pricePerMinute,
 }) => (
     <div className="clients">
         <CreateUser
@@ -17,11 +20,15 @@ const Clients = ({
 
         {Object.entries(clients).map(([id, client]) => (
             <User
+                setClients={setClients}
                 key={id}
                 id={id}
                 books={client.books}
                 activeUser={activeUser}
                 setActiveUser={setActiveUser}
+                setBooks={setBooks}
+                setProfit={setProfit}
+                pricePerMinute={pricePerMinute}
             />
         ))}
     </div>

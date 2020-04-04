@@ -9,6 +9,7 @@ const Book = ({
     setClients,
     activeUser,
     id,
+    setBooks,
 }) => {
     let className = 'book';
 
@@ -17,20 +18,34 @@ const Book = ({
     }
 
     const addBook = () => {
-        setClients((prevClients) => ({
-            ...prevClients,
-            [activeUser]: {
-                books: {
-                    ...prevClients[activeUser].books,
-                    // [id]: {
-                    //     author,
-                    //     title,
-                    //     cover,
-                    //     dateRequested: Date.now(),
-                    // },
+        const booksActiveUser = clients[activeUser].books;
+        if (
+            !booksActiveUser[id] &&
+            Object.keys(booksActiveUser).length < 3
+        ) {
+            setClients((prevClients) => ({
+                ...prevClients,
+                [activeUser]: {
+                    books: {
+                        ...prevClients[activeUser].books,
+                        [id]: {
+                            author,
+                            title,
+                            cover,
+                            dateRequested: Date.now(),
+                        },
+                    },
                 },
-            },
-        }));
+            }));
+
+            setBooks((prevBooks) => ({
+                ...prevBooks,
+                [id]: {
+                    ...prevBooks[id],
+                    available: prevBooks[id].available - 1,
+                },
+            }));
+        }
     };
 
     return (

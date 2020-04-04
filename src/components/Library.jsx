@@ -9,6 +9,7 @@ const Library = ({
     clients,
     setClients,
     activeUser,
+    setBooks,
 }) => {
     const [filteredBooks, setFilteredBooks] = useState(
         books
@@ -42,6 +43,7 @@ const Library = ({
                             title={book.title}
                             setClients={setClients}
                             clients={clients}
+                            setBooks={setBooks}
                         />
                     ))
                 ) : (

@@ -30,10 +30,13 @@ const App = () => {
             <div className="clients-wrapper">
                 <h1 className="cartel">
                     <span>Biblioteca Paranormal</span>
-                    <small>{profit}</small>
+                    <small>{profit.toFixed(2)}</small>
                 </h1>
 
                 <Clients
+                    setBooks={setBooks}
+                    setProfit={setProfit}
+                    pricePerMinute={pricePerMinute}
                     activeUser={activeUser}
                     setActiveUser={setActiveUser}
                     clients={clients}
@@ -41,6 +44,7 @@ const App = () => {
                 />
             </div>
             <Library
+                setBooks={setBooks}
                 activeUser={activeUser}
                 books={books}
                 clients={clients}
